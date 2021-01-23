@@ -39,7 +39,8 @@ public class HeavyController : MonoBehaviour
 
             //moving
 
-            if (Vector3.Distance(transform.position, _targetTransform.position) > 3)
+            var pos = new Vector3(_targetTransform.position.x,0,_targetTransform.position.z);
+            if (Vector3.Distance(transform.position, pos) > 3)
             {
                 transform.Translate(Vector3.forward * _speed * Time.deltaTime);
             }

@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
                 _heavyController.Reset();
                 _screemerPanel.SetActive(false);
                 _fpsController.enabled = false;
+                _fpsController.transform.eulerAngles = new Vector3(0, -180, 0);
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 //_playerController.Reset();
@@ -93,7 +94,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(7);
         ChangeState(GameState.Prepare);
     }
 
