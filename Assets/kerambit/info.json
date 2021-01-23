@@ -1,0 +1,24 @@
+{
+	"name" : "Kerambit",
+	"preview" : "textures/preview.jpg",
+	"version" : "0.0.1",
+	"author" : "Ilya Kuznetsov & Igor darwin",
+	"description" : "Knife",
+
+	"simpleblocks" : [
+		{
+			"uuid" : "caa949a4-80db-45cd-aa3d-4e8fcc5eeedb",
+			"name" : "Kerambit",
+			"description" : "Knife",
+			"icon" : "textures/to1.png",
+			"dif" : "textures/to2.jpg",
+			"collider" : "Grass",
+			"nor" : "textures/to2.jng",
+			"normScale" : 1,
+			"met" : "meshes/to4.mtl",
+			"smoothness" : 0.5,
+			"mesh" : "meshes/to.obj",
+			"scale" : 0.04
+		}
+	]
+}
