@@ -9,18 +9,21 @@ public class HeavyController : MonoBehaviour
     [SerializeField] private float _speed = 10;
 
     [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioSource _pootisSource;
+    [SerializeField] private AudioClip _startAudio;
+    [SerializeField] private AudioClip _gameOverAudio;
+
 
     private Camera _mainCamera;
     private bool _isActive;
 
     public Action OnGameOver;
 
-    private Vector3 resetPosition;
+    private Vector3 resetPosition = new Vector3(0, 0, -50);
 
     public void Awake()
     {
         _mainCamera = Camera.main;
-        resetPosition = transform.position;
     }
 
     public void Update()
@@ -36,13 +39,16 @@ public class HeavyController : MonoBehaviour
 
             //moving
 
-            if (Vector3.Distance(transform.position, _targetTransform.position) > 2)
+            if (Vector3.Distance(transform.position, _targetTransform.position) > 3)
             {
                 transform.Translate(Vector3.forward * _speed * Time.deltaTime);
             }
             else
             {
                 OnGameOver?.Invoke();
+                _audioSource.PlayOneShot(_gameOverAudio);
+                _pootisSource.Stop();
+                _isActive = false;
             }
         }
     }
@@ -51,12 +57,21 @@ public class HeavyController : MonoBehaviour
     {
         transform.position = resetPosition;
         _isActive = true;
-        _audioSource.Play();
+        _audioSource.PlayOneShot(_startAudio);
+        _pootisSource.Play();
+    }
+
+    public void StopGame()
+    {
+        _isActive = false;
+        _pootisSource.Stop();
     }
 
     public void Reset()
     {
         _isActive = false;
+        _pootisSource.Stop();
         transform.position = resetPosition;
     }
+
 }
